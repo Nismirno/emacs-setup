@@ -21,6 +21,13 @@
                                   `(:background ,bg-color :foreground ,bg-color)))
           (setq-local cursor-type nil))))
 
+    ;; Welp... Need to restore previous behavior of <left> and <right> in find-files buffer
+    (define-key helm-map (kbd "<left>") 'helm-previous-source)
+    (define-key helm-map (kbd "<right>") 'helm-next-source)
+    (customize-set-variable 'helm-ff-lynx-style-map t)
+    (customize-set-variable 'helm-imenu-lynx-style-map t)
+    (customize-set-variable 'helm-occur-use-ioccur-style-keys t)
+
     (add-hook 'helm-minibuffer-set-up-hook 'helm-hide-minibuffer-maybe)
     ;; The default "C-x c" is quite close to "C-x C-c", which quits Emacs.
     ;; Changed to "C-c h". Note: We must set "C-c h" globally, because we
@@ -108,6 +115,7 @@
     (define-key global-map [remap find-tag] 'helm-etags-select)
 
     (define-key global-map [remap list-buffers] 'helm-buffers-list)
+
 
     ;; autoresize helm buffer
     (setq helm-autoresize-max-height 60)

@@ -2,7 +2,7 @@
 (require 'semantic)
 
 (global-semanticdb-minor-mode t)
-(global-semantic-idle-scheduler-mode t)
+;;(global-semantic-idle-scheduler-mode t)
 (global-semantic-stickyfunc-mode t)
 
 (defun custom-cedet-hook ()

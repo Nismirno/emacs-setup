@@ -46,6 +46,11 @@
   :init
   (add-hook 'prog-mode-hook 'yas-minor-mode))
 
+(req-package yasnippet-snippets
+  :ensure t
+  :defer t
+  :init)
+
 (req-package clean-aindent-mode
   :ensure t
   :init
@@ -104,5 +109,8 @@ point reaches the beginning or end of the buffer, stop there."
       (move-beginning-of-line 1))))
 
 (global-set-key (kbd "C-a") 'prelude-move-beginning-of-line)
+(global-set-key (kbd "M-r") 'query-replace)
+
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 (provide 'setup-editing)

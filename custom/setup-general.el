@@ -8,6 +8,7 @@
 (global-subword-mode t)
 (show-paren-mode t)
 (column-number-mode -1)
+(global-display-line-numbers-mode t)
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 
@@ -25,8 +26,9 @@
               visible-bell t
               word-wrap t
               gdb-many-windows t
-              gdb-show-main t)
-(set-face-attribute 'default nil :height 105 :family "Incosolata")
+              gdb-show-main t
+              split-width-threshold 300)
+(set-face-attribute 'default nil :height 105 :family "Inconsolata")
 (set-face-attribute 'hl-line nil :background "#3a2c65")
 (set-face-attribute 'font-lock-comment-face nil :foreground "gray50")
 (set-face-attribute 'warning nil :foreground "gold1")
@@ -43,6 +45,15 @@
                                (setq-local compilation-read-command nil)
                                (call-interactively 'compile)))
 
+(set-language-environment 'utf-8)
+(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+
+(prefer-coding-system 'cp866)
+(prefer-coding-system 'koi8-r-unix)
+(prefer-coding-system 'windows-1251-dos)
+(prefer-coding-system 'utf-8)
+
 (req-package projectile
   :ensure t
   :init
@@ -54,5 +65,6 @@
 
 (global-set-key (kbd "C-c w") 'whitespace-mode)
 (windmove-default-keybindings)
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
 
 (provide 'setup-general)

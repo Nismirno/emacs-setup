@@ -10,6 +10,11 @@
     (add-hook 'c++-mode-hook 'irony-mode)
     (add-hook 'c-mode-hook 'irony-mode)
 
+    (when (boundp 'w32-pipe-read-delay)
+      (setq w32-pipe-read-delay 0))
+    (when (boundp 'w32-pipe-buffer-size)
+      (setq irony-server-w32-pipe-buffer-size (* 64 1024)))
+
     (setq-default irony-cdb-compilation-databases '(irony-cdb-libclang
                                                     irony-cdb-clang-complete
                                                     irony-cdb-json))
