@@ -7,9 +7,12 @@
 (req-package aggressive-indent
   :ensure t)
 
+(req-package smart-tabs-mode
+  :ensure t)
+
 (req-package cc-mode
   :ensure t
-  :require auto-complete-c-headers
+  :require auto-complete-c-headers smart-tabs-mode
   :config
   (smart-tabs-insinuate 'c 'c++)
   (load-library "hideshow")

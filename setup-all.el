@@ -46,6 +46,9 @@
   :ensure t
   :config (req-package--log-set-level 'debug))
 
+(req-package monokai-theme
+  :ensure t)
+
 (req-package load-dir
   :ensure t
   :force true
